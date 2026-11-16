@@ -38,14 +38,7 @@ await page.evaluate(() => {
 });
 const cap = (text) => page.evaluate((t) => { document.getElementById('cap').textContent = t; }, text);
 const click = (s) => page.evaluate((sel) => document.querySelector(sel)?.click(), s);
-const playBest = () => page.evaluate(() => {
-  const B = window.__BQ, g = B.G;
-  const missing = B.ann().req.filter((t) => !g.bid.tags.includes(t));
-  let idx = -1;
-  if (missing.length) idx = g.hand.findIndex((id) => B.CARDS[id].type === 'cert' && missing.includes(B.CARDS[id].tag));
-  if (idx < 0) idx = B.bestMove();
-  if (idx >= 0) { B.toggleSelect(idx); B.playSelected(); }
-});
+const playSel = () => page.evaluate(() => window.__BQ.playSelected());
 const rig = () => page.evaluate(() => { const B = window.__BQ; const my = B.totalScore(); B.G.rivals.forEach((r, i) => { r.score = Math.max(5, my - 8 - i * 7); }); });
 const selectBest = () => page.evaluate(() => {
   const B = window.__BQ, g = B.G;
@@ -83,7 +76,7 @@ await cap('혁신제품 · 중소기업 · 친환경… 정책 인증 태그가 
 await sleep(1700);
 await click('[data-action="tutNext"]');
 await cap('입찰서 완성! 경쟁사보다 높은 점수를 받으면 낙찰.');
-for (let k = 0; k < 4; k++) { await selectBest(); await sleep(650); await playBest(); await sleep(950); }
+for (let k = 0; k < 4; k++) { await selectBest(); await sleep(650); await playSel(); await sleep(950); }
 await rig();
 await click('#btnSubmit');
 await cap('경쟁사 입찰 점수 공개…');
@@ -96,7 +89,7 @@ await click('[data-action="reward"]');
 await sleep(1800);
 await click('[data-action="enterPlay"]');
 await cap('두 번째 공고. 가격과 품질, 정책의 균형.');
-for (let k = 0; k < 4; k++) { await selectBest(); await sleep(450); await playBest(); await sleep(650); }
+for (let k = 0; k < 4; k++) { await selectBest(); await sleep(450); await playSel(); await sleep(650); }
 await rig();
 await click('#btnSubmit');
 await sleep(4400);
@@ -105,7 +98,7 @@ await sleep(2000);
 await click('[data-action="reward"]');
 await sleep(1600);
 await click('[data-action="enterPlay"]');
-for (let k = 0; k < 2; k++) { await selectBest(); await sleep(400); await playBest(); await sleep(600); }
+for (let k = 0; k < 2; k++) { await selectBest(); await sleep(400); await playSel(); await sleep(600); }
 await rig();
 await click('#btnSubmit');
 await sleep(4400);
@@ -116,7 +109,7 @@ await page.evaluate(() => { const B = window.__BQ; B.G.round = 7; B.G.wins = 6; 
 await cap('마지막 공고 — 조달청 본청. 혁신제품 + 친환경 필수.');
 await sleep(1700);
 await click('[data-action="enterPlay"]');
-for (let k = 0; k < 4; k++) { await selectBest(); await sleep(400); await playBest(); await sleep(600); }
+for (let k = 0; k < 4; k++) { await selectBest(); await sleep(400); await playSel(); await sleep(600); }
 await rig();
 await click('#btnSubmit');
 await sleep(4400);
