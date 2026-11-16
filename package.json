@@ -4,17 +4,19 @@
   "description": "2026 조달청 AI 게임·콘텐츠 공모전 출품작 - 나라장터 입찰 배틀",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.mjs",
+    "build": "node build.mjs",
+    "sim": "node sim.mjs",
+    "shot": "node shot.mjs",
+    "video": "node video.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "dependencies": {
-    "puppeteer-core": "^25.17.0"
-  },
   "devDependencies": {
     "esbuild": "^0.28.2",
-    "ffmpeg-static": "^5.3.0"
+    "ffmpeg-static": "^5.3.0",
+    "puppeteer-core": "^25.17.0"
   }
 }
