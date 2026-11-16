@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BID QUEST — 나라장터 입찰 배틀</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563eb'/%3E%3Cpath d='M9 8h9a5 5 0 0 1 0 10h-5v6H9z' fill='%23fff'/%3E%3Ccircle cx='22' cy='23' r='4' fill='%230aa2c0'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div id="ui">
+  <header id="hud" class="hidden">
+    <div class="hud-left">
+      <span class="logo-mini">BID QUEST</span>
+      <span id="mascotBird" class="mascot" title="비드">
+        <svg viewBox="0 0 64 64"><circle cx="32" cy="38" r="20" fill="#fff" stroke="#d9e1f2" stroke-width="2"/><circle cx="32" cy="20" r="15" fill="#fff" stroke="#d9e1f2" stroke-width="2"/><rect x="18" y="14" width="28" height="5" rx="2.5" fill="#0aa2c0"/><circle cx="25" cy="17" r="6" fill="#7ddcff" stroke="#0aa2c0" stroke-width="2.5"/><circle cx="39" cy="17" r="6" fill="#7ddcff" stroke="#0aa2c0" stroke-width="2.5"/><path d="M32 24 l-5 6 h10 z" fill="#f59e0b"/><path d="M30 4 q2 -4 5 0 q-2 3 -5 0" fill="#f59e0b"/></svg>
+      </span>
+      <span id="roundLabel" class="round-label"></span>
+    </div>
+    <div id="lives" class="lives"></div>
+    <div class="hud-right">
+      <span id="savings" class="savings"></span>
+      <span id="mascotTiger" class="mascot" title="호비">
+        <svg viewBox="0 0 64 64"><path d="M14 16 l6 -10 l8 8 z" fill="#fb923c"/><path d="M50 16 l-6 -10 l-8 8 z" fill="#fb923c"/><circle cx="32" cy="34" r="22" fill="#fb923c"/><path d="M12 28 h10 M12 38 h9 M52 28 h-10 M52 38 h-9" stroke="#7c2d12" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="42" r="9" fill="#fff7ed"/><circle cx="25" cy="30" r="3" fill="#1c1917"/><circle cx="39" cy="30" r="3" fill="#1c1917"/><path d="M29 42 h6 l-3 4 z" fill="#7c2d12"/></svg>
+      </span>
+      <button id="btnHint" class="icon-btn" title="호비 AI 비서 힌트">AI 힌트</button>
+      <button id="btnMute" class="icon-btn" title="사운드 켜기/끄기">사운드</button>
+    </div>
+  </header>
+
+  <section id="announce" class="panel hidden"></section>
+  <section id="bidpanel" class="panel hidden"></section>
+
+  <footer id="handbar" class="hidden">
+    <div id="hand"></div>
+    <div id="actions">
+      <span id="counters" class="counters"></span>
+      <button id="btnPlay" class="act amber">선택 카드 사용</button>
+      <button id="btnDiscard" class="act dim">교체</button>
+      <button id="btnSubmit" class="act cyan">입찰 제출</button>
+    </div>
+  </footer>
+
+  <div id="stamp" class="hidden"></div>
+  <div id="toast" class="hidden"></div>
+  <div id="overlay" class="hidden"></div>
+</div>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
